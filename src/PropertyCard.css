@@ -1,0 +1,71 @@
+.property-card {
+  display: flex;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.property-images {
+  width: 40%;
+}
+
+.property-images img.thumbnail {
+  width: 100%;
+  height: auto;
+  max-height: 200px; /* Set a max height for the thumbnails */
+  object-fit: cover; /* Ensure images maintain aspect ratio */
+}
+
+.property-details {
+  padding: 20px;
+  flex-grow: 1;
+  position: relative; /* Allow for positioning furnished label */
+}
+
+.header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.owner-rating {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.yellow {
+  color: gold; /* Apply yellow color for the star */
+}
+
+.furnished-label {
+  background-color: green; /* Or any color you prefer */
+  color: white;
+  padding: 5px;
+  border-radius: 3px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.price-info .divider {
+  margin: 0 5px; /* Reduce gap between elements */
+}
+
+.highlights {
+  margin-top: 10px;
+}
+
+.vastu-rating {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.vastu-icon {
+  width: 24px; /* Adjust size as needed */
+  height: 24px;
+  margin-right: 8px;
+  vertical-align: middle;
+}

@@ -1,0 +1,114 @@
+/* General styling */
+.overview {
+  padding: 20px;
+}
+
+.carousel-property-info {
+  display: flex;
+}
+
+.carousel {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.carousel img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.property-info {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+}
+
+.info-icon {
+  margin-right: 8px;
+}
+
+.about-property, .furnishing-details, .amenities {
+  margin-top: 20px;
+}
+
+hr {
+  margin: 20px 0;
+}
+
+.appliances, .amenities-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.appliance-item, .amenity-item {
+  width: 30%;
+  display: flex;
+  align-items: center;
+  margin: 5px 0;
+}
+
+.appliance-icon, .amenity-icon {
+  margin-right: 8px;
+}
+
+.house-rules {
+  margin: 20px 0;
+}
+
+.house-rules h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.rules-list {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* Limit to 5 items per row */
+  gap: 15px;
+}
+
+.own-icon
+{
+  height:30px;
+  width: 30px;
+  margin-right: 8px;
+}
+
+.rule-item {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.rule-item strong {
+  margin-left: 8px;
+  font-weight: 600;
+}
+
+.rule-item svg {
+  margin-right: 8px;
+  color: #4CAF50; /* Optional: color for icons */
+}
+
+@media (max-width: 768px) {
+  .rules-list {
+    grid-template-columns: repeat(2, 1fr); /* Adjust for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .rules-list {
+    grid-template-columns: repeat(1, 1fr); /* Adjust for mobile screens */
+  }
+}

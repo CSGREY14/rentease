@@ -1,0 +1,81 @@
+/* src/components/SearchBar.css */
+
+.search-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+  background-color: #fcfafb;
+  width: 80%; /* 80% of screen width */
+  margin: 0 auto; /* Center align */
+  border: 2px solid #ccc; /* Rounded square border */
+  border-radius: 15px; /* Rounded corners */
+}
+
+.search-options {
+  display: flex;
+  gap: 10px;
+}
+
+.search-options button {
+  padding: 8px 16px;
+  border: 1px solid #ccc;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.search-options button.active {
+  background-color: #ff0000; /* Red for active option */
+}
+
+.search-options button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+.search-input {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  width: 100%; /* Ensure it takes full width */
+}
+
+.property-type {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+}
+
+.search-text-wrapper {
+  position: relative;
+  width: 100%; /* Set to 100% of available space */
+  display: flex;
+  align-items: center;
+}
+
+.search-text-wrapper input {
+  padding: 10px 40px 10px 30px; /* More padding for larger input */
+  width: 100%; /* Full width of the available space */
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+.search-icon {
+  position: absolute;
+  left: 10px;
+  font-size: 16px;
+  color: #999;
+}
+
+.search-btn {
+  padding: 10px 16px; /* Slightly bigger search button */
+  background-color: #00bcd4 !important;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.search-btn:hover {
+  background-color: #008c9e !important;
+}

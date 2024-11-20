@@ -1,0 +1,67 @@
+.properties-management {
+  padding: 20px;
+}
+
+.add-property-form {
+  margin-bottom: 20px;
+}
+
+.add-property-form input,
+.add-property-form select {
+  display: block;
+  margin: 10px 0;
+  padding: 8px;
+  width: 100%;
+  max-width: 300px;
+}
+
+.add-property-form button {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.add-property-form button:hover {
+  background-color: #45a049;
+}
+
+.properties-list table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.properties-list th,
+.properties-list td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.properties-list th {
+  background-color: #f2f2f2;
+  text-align: left;
+}
+
+.properties-list td button {
+  margin-right: 5px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.properties-list td button:hover {
+  background-color: #0056b3;
+}
+
+.properties-list td button:last-child {
+  background-color: #f44336;
+}
+
+.properties-list td button:last-child:hover {
+  background-color: #e53935;
+}

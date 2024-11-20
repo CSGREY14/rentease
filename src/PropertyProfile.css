@@ -1,0 +1,123 @@
+.property-profile-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.left-section {
+  width: 25%;
+}
+
+.progress-steps {
+  display: flex;
+  flex-direction: column;
+}
+
+.step {
+  padding: 10px;
+  border-left: 3px solid lightgray;
+  margin-bottom: 10px;
+}
+
+.step.completed {
+  color: green;
+  border-left-color: green;
+}
+
+.step.active {
+  color: blue;
+  border-left-color: blue;
+}
+
+.step span {
+  color: blue;
+  cursor: pointer;
+}
+
+.property-score {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.score-circle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: #eee;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.score-circle span {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.main-section {
+  width: 60%;
+}
+
+.main-section h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.room-details-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.room-details h4 {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.room-details label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.options {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.options button {
+  padding: 10px 15px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+
+.options button.selected {
+  background-color: #803ecc;
+  color: white;
+  border-color: #007bff;
+}
+
+.add-other {
+  background-color: #28a745;
+  color: white;
+}
+
+input[type="number"] {
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100px;
+}
+
+.continue-btn {
+  padding: 10px 15px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}

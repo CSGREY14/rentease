@@ -1,0 +1,76 @@
+/* src/components/RecommendedProperties.css */
+
+.recommended-section {
+  position: relative;
+  width: 100%;
+  overflow: hidden; /* Hide overflow to allow scrolling */
+  padding: 20px;
+  background-color: rgba(254, 251, 250, 0.967);
+}
+
+.recommended-title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.recommended-cards-wrapper {
+  display: flex;
+  gap: 20px;
+  transition: transform 0.3s ease; /* Smooth scrolling */
+}
+
+.recommended-card {
+  min-width: 300px; /* Card width */
+  max-width: 300px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  overflow: hidden;
+  background-color: white;
+}
+
+.recommended-card img {
+  width: 100%;
+  height: 50%;
+}
+
+.recommended-card-details {
+  padding: 10px;
+}
+
+.recommended-card-details h3 {
+  margin: 0 0 10px 0;
+}
+
+.recommended-card-details p {
+  margin: 5px 0;
+}
+
+.scroll-btn-left {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  width: auto;
+  transform: translateY(-50%);
+  background-color: #ccc;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.scroll-btn-right {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  width: auto;
+  transform: translateY(-50%);
+  background-color: #ccc;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.scroll-btn-left:hover, .scroll-btn-right:hover {
+  background-color: #999;
+}

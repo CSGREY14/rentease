@@ -1,0 +1,175 @@
+.photo-upload-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.left-section {
+  width: 25%;
+}
+
+.progress-steps {
+  display: flex;
+  flex-direction: column;
+}
+
+.step {
+  padding: 10px;
+  border-left: 3px solid lightgray;
+  margin-bottom: 10px;
+}
+
+.step.completed {
+  color: green;
+  border-left-color: green;
+}
+
+.step.active {
+  color: blue;
+  border-left-color: blue;
+}
+
+.step span {
+  color: blue;
+  cursor: pointer;
+}
+
+.property-score {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.score-circle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: #eee;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.score-circle span {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.main-section {
+  width: 60%;
+}
+
+.main-section h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.upload-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.upload-section h4 {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.file-upload-label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.upload-input {
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+}
+
+.upload-preview {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.upload-preview img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.upload-button {
+  padding: 10px 15px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.upload-button.disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.remove-button {
+  background-color: #dc3545;
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.remove-button:hover {
+  background-color: #c82333;
+}
+
+.video-upload-label {
+  margin-top: 20px;
+}
+
+video-preview {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+.back-button,
+.submit-button {
+  padding: 10px 15px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.back-button {
+  background-color: #6c757d;
+}
+
+.submit-button:hover {
+  background-color: #0056b3;
+}
+
+.back-button:hover {
+  background-color: #5a6268;
+}
