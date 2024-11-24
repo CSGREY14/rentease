@@ -5,6 +5,7 @@ import PropertyProfile from './PropertyProfile'; // For Residential
 import PropertyProfileCommercial from './PropertyProfileCommercial'; // For Commercial
 import PhotoUpload from './PhotoUpload';
 import PricingForm from './PricingForm';
+import VastuCalc from './VastuCalc';
 
 function MultiStageForm() {
   const [step, setStep] = useState(1); // To track the current step
@@ -187,6 +188,14 @@ function MultiStageForm() {
         />
       )}
       {step === 5 && (
+        <VastuCalc
+          formData={formData}
+          updateFormData={updateFormData}
+          nextStep={nextStep}
+          prevStep={prevStep}
+        />
+      )}
+      {step === 6 && (
         <PricingForm
           formData={formData}
           updateFormData={updateFormData}

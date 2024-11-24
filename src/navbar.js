@@ -29,21 +29,16 @@ function Navbar() {
     <header className="header">
       <nav className="navbar">
         <div className="navbar-brand">RentEase</div>
-        <ul className="navbar-links">
-          <li><a href="#">For Buyers</a></li>
-          <li><a href="#">For Tenants</a></li>
-          <li><a href="#">For Owners</a></li>
-          <li><a href="#">For Dealers</a></li>
-          <li><a href="#">Insights</a></li>
-        </ul>
+        
         <div className="navbar-buttons">
           <Link to="/msf">
             <button className="post-property-btn">Post Property</button>
           </Link>
+          <Link to="/contact">
           <button className="contact-btn">
             <FaPhoneAlt />
           </button>
-
+          </Link>
           <div className="profile-dropdown">
             <button className="profile-btn">
               <FaUserCircle />
@@ -52,9 +47,9 @@ function Navbar() {
               {isLoggedIn ? (
                 <>
                   <p className="dropdown-item">{username}</p>
-                  <Link to="/manage-listings" className="dropdown-item">Manage Listings</Link>
+                  
                   <Link to="/user-profile-page" className="dropdown-item">Manage Profile</Link>
-                  <Link to="/shortlisted-properties" className="dropdown-item">Shortlisted Properties</Link>
+                  
                   {usertype==="Admin" && (<><Link to="/admin-panel" className="dropdown-item">Admin Panel</Link></>)}
                   <button onClick={handleLogout} className="dropdown-item">Logout</button>
                   {console.log(usertype)}

@@ -1,0 +1,83 @@
+.vastu-calc {
+  text-align: center;
+  margin-top: 50px;
+  font-family: Arial, sans-serif;
+}
+
+.vastu-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.questions-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Two questions per row */
+  gap: 20px; /* Space between questions */
+  width: 100%; /* Full width to use available space */
+}
+
+.question-box {
+  margin-left: 20px; /* Adds space between the grid and score/feedback */
+}
+
+.vastu-button {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  margin-top: 20px;
+  font-size: 16px;
+}
+
+.vastu-button:hover {
+  background-color: #45a049;
+}
+
+.result {
+  margin-top: 30px;
+}
+
+.result h3 {
+  color: #333;
+  font-size: 24px;
+}
+
+.result p {
+  font-size: 18px;
+  color: #666;
+}
+
+.direction-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5px;
+  width: 150px;
+  margin: 20px auto;
+}
+
+.grid-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #ccc;
+  padding: 10px;
+  font-size: 14px;
+  background-color: #f4f4f4;
+  height: 50px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.grid-item.selected {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.score {
+  font-size: 14px;
+  color: #666;
+  margin-left: 10px;
+}
+

@@ -8,6 +8,7 @@ import RecommendedProperties from './recommendedproperties';
 import ReviewRatings from './ReviewRatings';
 import { useEffect } from 'react';
 import LocalityDetailsComponent from './LocalityDetailsComponent';
+import ReportButton from './ReportButton';
 
 function PropertyDetails() {
   const { state } = useLocation();
@@ -44,14 +45,19 @@ function PropertyDetails() {
         <DealerDetails property={property}/>
       </section>
 
-      <section id="reviews">
-        <ReviewRatings/>
+      <section id="report-button">
+        <ReportButton />
       </section>
-
+      
       <section id="society-details">
         <LocalityDetailsComponent/>
       </section>
 
+      <section id="reviews">
+        <ReviewRatings/>
+      </section>
+
+      
 
       <section id="recommendations">
         <RecommendedProperties locality={property.locality} category={property.propertyType}/>

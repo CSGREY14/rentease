@@ -102,7 +102,7 @@ function SignIn() {
             <option value="family">Family</option>
             <option value="commercial">Commercial buyer</option>
             <option value="Owner">Owner</option>
-            <option value="Owner">Admin</option>
+            <option value="Admin">Admin</option>
           </select>
         </div>
 

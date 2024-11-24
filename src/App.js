@@ -12,6 +12,8 @@ import MultiStageForm from './MultiStageForm';
 import PropertyDetails from './PropertyDetails';
 import UserProfilePage from './UserProfilePage';
 import AdminPanel from './AdminPanel';
+import VastuCalc from './VastuCalc';
+import Contact from './contact';
 // Placeholder components for future pages
 
 const About = () => <h2>About Page</h2>;
@@ -51,6 +53,8 @@ function App() {
           <Route path="/property-details" element={<PropertyDetails />} />
           <Route path='/user-profile-page' element={<UserProfilePage/>}></Route>
           <Route path='/admin-panel' element={<AdminPanel/>}></Route>
+          <Route path='/vastu-calc' element={<VastuCalc/>}></Route>
+          <Route path='/contact' element={<Contact/>}></Route>
         </Routes>
       </div>
     </Router>

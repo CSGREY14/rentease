@@ -74,7 +74,7 @@ const ReviewRatingsComponent = () => {
 
   return (
     <div style={{ padding: '20px', maxWidth: '1000px', margin: '0 auto' }}>
-      <h3>Ratings and Reviews</h3>
+      <h3>Locality Ratings and Reviews</h3>
       <div style={{ textAlign: 'center', marginBottom: '20px' }}>
         <h2>{averageRating}/5</h2>
         <Rating name="average-rating" value={Number(averageRating)} precision={0.1} readOnly />
