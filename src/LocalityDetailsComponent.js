@@ -10,9 +10,9 @@ const LocalityDetailsComponent = () => {
     name: "Bahour",
     description: "Bahour is a well-developed area known for its residential and commercial properties. It is close to major facilities like schools and hospitals.",
     images: [
-      "/images/locality1.jpg", // Use sample image paths
-      "/images/locality2.jpg",
-      "/images/locality3.jpg",
+      "./b1.jpg", // Use sample image paths
+      "./b2.jpg",
+      
     ],
     highlights: [
       "5 min to XYZ School",
