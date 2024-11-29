@@ -59,14 +59,35 @@ function DealerDetails({ property }) {
         userPhone,
         message: enquiry,
       };
+  
+      const tenantData = {
+        propertyId: property._id,
+        ownerName: dealerInfo.name,
+        tenantName: userName,
+        tenantEmail: userEmail,
+        tenantPhoneNo: userPhone,
+        status: "Pending",
+      };
+  
+      // Send enquiry
       axios.post('http://localhost:5002/api/send-enquiry', enquiryData)
-        .then(() => alert('Enquiry sent successfully!'))
-        .catch((error) => console.error("Error sending enquiry", error));
+        .then(() => {
+          alert('Enquiry sent successfully!');
+          
+          // Add record to tenants table
+          return axios.post('http://localhost:5001/api/tenants/add', tenantData);
+        })
+        .then(() => {
+          alert('Tenant record added successfully!');
+        })
+        .catch((error) => {
+          console.error("Error in processing request", error);
+        });
     } else {
       alert('Please agree to the terms and conditions.');
     }
   };
-
+  
   return (
     <div className="dealer-details">
       <div className="dealer-info">

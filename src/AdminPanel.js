@@ -6,6 +6,7 @@ import UserManagement from './UserManagement';
 import PropertiesManagement from './PropertiesManagement';
 import AnalyticsAndReports from './AnalyticsAndReports';
 import ModerationPanel from './ModerationPanel';
+import Navbar from './navbar';
 
 const AdminPanel = () => {
   const [activeSection, setActiveSection] = useState('UserManagement');
@@ -31,6 +32,7 @@ const AdminPanel = () => {
 
   return (
     <div className="admin-panel">
+      <Navbar/>
       <Sidebar menuItems={menuItems} onSelect={setActiveSection} />
       <div className="content">{renderContent()}</div>
     </div>

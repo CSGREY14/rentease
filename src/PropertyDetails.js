@@ -46,7 +46,7 @@ function PropertyDetails() {
       </section>
 
       <section id="report-button">
-        <ReportButton />
+        <ReportButton property={property}/>
       </section>
       
       <section id="society-details">

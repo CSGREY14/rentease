@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import "./signup.css"; 
+import { Link } from "react-router-dom"; // Import Link for navigation
+
 
 function SignIn() {
   const [formData, setFormData] = useState({
@@ -147,6 +149,12 @@ function SignIn() {
           <button type="submit">Sign In</button>
         </div>
       </form>
+       {/* Login Link */}
+       <div className="login-link">
+        <p>
+          Already have an account? <Link to="/login">Login</Link>
+        </p>
+      </div>
     </div>
   );
 }

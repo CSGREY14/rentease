@@ -1,69 +1,95 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Listings.css";
+import axios from "axios";
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
-// Stub property data
-const properties = [
-  {
-    id: 1,
-    images: [
-      "https://via.placeholder.com/300x200?text=Property+1+Image+1",
-      "https://via.placeholder.com/300x200?text=Property+1+Image+2",
-      "https://via.placeholder.com/300x200?text=Property+1+Image+3",
-    ],
-    title: "Cozy Apartment",
-    location: "New York",
-    price: "$2000/month",
-    type: "Residential",
-  },
-  {
-    id: 2,
-    images: [
-      "https://via.placeholder.com/300x200?text=Property+2+Image+1",
-      "https://via.placeholder.com/300x200?text=Property+2+Image+2",
-    ],
-    title: "Luxury Villa",
-    location: "Los Angeles",
-    price: "$5000/month",
-    type: "Residential",
-  },
-  {
-    id: 3,
-    images: [
-      "https://via.placeholder.com/300x200?text=Property+3+Image+1",
-      "https://via.placeholder.com/300x200?text=Property+3+Image+2",
-    ],
-    title: "Office Space",
-    location: "Chicago",
-    price: "$3000/month",
-    type: "Commercial",
-  },
-];
 
 const Listings = () => {
+  const [properties, setProperties] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const navigate = useNavigate();
+  
+  const viewDetails = (property) => {
+    
+    navigate('/property-details', { state: { property } }); // Pass property data as state
+  };
+  // Fetch properties from the API
+  const fetchProperties = async () => {
+    try {
+      // Get user ID from localStorage
+      const user = JSON.parse(localStorage.getItem("user"));
+      if (!user || !user._id) {
+        throw new Error("User not found in localStorage");
+      }
+
+      const userId = user._id;
+
+      // Call API to fetch properties
+      const response = await axios.post("http://localhost:5001/api/properties-by-owner", { userId });
+      setProperties(response.data.properties);
+      setLoading(false);
+    } catch (err) {
+      console.error("Error fetching properties:", err);
+      setError(err.message || "Failed to fetch properties");
+      setLoading(false);
+    }
+  };
+
+  // Fetch properties on component mount
+  useEffect(() => {
+    fetchProperties();
+  }, []);
+
   return (
     <div className="listings-container">
       <h2>Your Posted Properties</h2>
-      <div className="card-grid">
-        {properties.map((property) => (
-          <div className="card" key={property.id}>
-            <div className="carousel">
-              {property.images.map((image, index) => (
-                <img
-                  src={image}
-                  alt={`Property ${property.id} Image ${index + 1}`}
-                  key={index}
-                />
-              ))}
+      {loading ? (
+        <p>Loading properties...</p>
+      ) : error ? (
+        <p className="error-message">{error}</p>
+      ) : properties.length === 0 ? (
+        <p>No properties found.</p>
+      ) : (
+        <div className="card-grid">
+          {properties.map((property) => (
+            <div className="card" key={property._id}>
+              <div className="carousel">
+                {property.uploadedPhotos.map((image, index) => (
+                  <img
+                    src={`http://localhost:5001/${image}`}
+                    alt="Property"
+                    key={index}
+                  />
+                ))}
+              </div>
+              <div className="details">
+                <h3>{property.propertyType}</h3>
+                <p><strong>Location:</strong> {property.locality}</p>
+                <p><strong>Price:</strong> {property.expectedRent}</p>
+                <p><strong>Type:</strong> {property.propertySubtype}</p>
+                <p>
+  <strong>Available Status:</strong>{" "}
+  <span
+    style={{
+      color: property.availableStatus ? "green" : "red",
+    }}
+  >
+    {property.availableStatus ? "Available" : "Not Available"}
+  </span>
+</p>
+
+                <button
+          className="view-details-button"
+          onClick={() => viewDetails(property)}
+        >
+          View Details
+        </button>
+              </div>
             </div>
-            <div className="details">
-              <h3>{property.title}</h3>
-              <p><strong>Location:</strong> {property.location}</p>
-              <p><strong>Price:</strong> {property.price}</p>
-              <p><strong>Type:</strong> {property.type}</p>
-            </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 };

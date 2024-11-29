@@ -6,7 +6,7 @@ import PropertyProfileCommercial from './PropertyProfileCommercial'; // For Comm
 import PhotoUpload from './PhotoUpload';
 import PricingForm from './PricingForm';
 import VastuCalc from './VastuCalc';
-
+import Navbar from './navbar';
 function MultiStageForm() {
   const [step, setStep] = useState(1); // To track the current step
   const [formData, setFormData] = useState({
@@ -102,7 +102,8 @@ function MultiStageForm() {
       smokingAllowed: false,
       drinkingAllowed: false,
     },
-    
+    availableStatus: true,
+    renterName: '',
     uploadedPhotos: [],
   });
 
@@ -144,6 +145,7 @@ function MultiStageForm() {
 
   return (
     <div>
+<Navbar/>
       {step === 1 && (
         <PostProperty
           formData={formData}

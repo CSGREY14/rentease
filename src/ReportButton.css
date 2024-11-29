@@ -5,6 +5,13 @@
   gap: 10px;
   font-family: Arial, sans-serif;
 }
+.favourite-button-container {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  gap: 10px;
+  font-family: Arial, sans-serif;
+}
 
 .report-button {
   display: flex;

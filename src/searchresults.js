@@ -6,6 +6,7 @@ import ResultHeader from './result-header'; // Ensure it imports correctly
 import { useLocation } from 'react-router-dom';
 import PGFilterPanel from './pgfilterpanel'; // Import PG filter panel
 import CommercialFilterPanel from './commercialfilterpanel'; // Import Commercial filter panel
+import Navbar from './navbar';
 
 function SearchResults() {
   const [properties, setProperties] = useState([]);
@@ -208,7 +209,7 @@ if (appliedFilters.houseRules.length > 0) {
 
   return (
     <div className="search-results-page">
-      <ResultHeader /> {/* Ensure this renders at the top */}
+      <Navbar /> {/* Ensure this renders at the top */}
       <div className="content-wrapper">
       {renderFilterPanel()} {/* Render the appropriate filter panel */}
         <div className="property-list">

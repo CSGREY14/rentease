@@ -1,27 +1,63 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import './ReportButton.css';
 
-const ReportButton = () => {
+const ReportButton = ({property}) => {
     const [isPopupOpen, setIsPopupOpen] = useState(false);
-    const [reportFormData, setReportFormData] = useState({ issue: '', details: '' });
+    const [reportFormData, setReportFormData] = useState({ propertyId: property._id, ownerName:property.ownerName ,issue: '', details: '' ,flagged:true});
 
     const togglePopup = () => setIsPopupOpen(!isPopupOpen);
-
+    const addWishlist = async () => {
+        try {
+            const user = JSON.parse(localStorage.getItem('user')); // Retrieve and parse user data from localStorage
+            if (!user || !user._id) {
+                alert("User not logged in");
+                return;
+            }
+    
+            const userId = user._id;
+            const propertyId = property._id;
+    
+            const response = await axios.post('http://localhost:5001/api/wishlist', { userId, propertyId });
+    
+            if (response.status === 201) {
+                alert('Wishlisted successfully');
+            }
+        } catch (error) {
+            console.error("Error adding to wishlist:", error);
+            alert('Failed to add to wishlist', error);
+        }
+    };        
     const handleChange = (e) => {
         const { name, value } = e.target;
         setReportFormData({ ...reportFormData, [name]: value });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log('Property reported:', reportFormData);
-        alert('Thank you! The property has been reported.');
-        setReportFormData({ issue: '', details: '' }); // Reset form
-        setIsPopupOpen(false); // Close popup
-    };
+    
+        try {
+          const response = await axios.post('http://localhost:5001/api/reportProperty', reportFormData);
+          console.log('Property reported:', response.data);
+          alert('Thank you! The property has been reported.');
+          setReportFormData({ propertyId: property._id, ownerName: property.ownerName, issue: '', details: '',flagged:true }); // Reset form
+          setIsPopupOpen(false); // Close popup
+        } catch (error) {
+          console.error('Error reporting the property:', error);
+          alert('There was an issue reporting the property. Please try again later.');
+        }
+      };
 
     return (
+        <><div className="favourite-button-container">
+        <span>Like this property?</span>
+        <button className="report-button" onClick={addWishlist}>
+            <img src="./wish-list.png" alt="Favourite Logo" className="report-logo" />
+            Wishlist
+        </button>
+        </div>
         <div className="report-button-container">
+            
             <span>Something wrong with this property?</span>
             <button className="report-button" onClick={togglePopup}>
                 <img src="./error.png" alt="Report Logo" className="report-logo" />
@@ -74,7 +110,7 @@ const ReportButton = () => {
                     </div>
                 </div>
             )}
-        </div>
+        </div></>
     );
 };
 

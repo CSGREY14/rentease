@@ -1,8 +1,9 @@
 import React from 'react';
 import './contact.css';
-
+import Navbar from './navbar';
 const Contact = () => {
   return (
+    <><Navbar/>
     <div className='contact-body'> 
     <div className="contact-app-container">
       {/* Image Section */}
@@ -53,6 +54,7 @@ const Contact = () => {
       </div>
     </div>
     </div>
+    </>
   );
 };
 

@@ -1,41 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import './UserManagement.css';
 
-const initialUsers = [
-  {
-    id: 1,
-    name: "Alice Johnson",
-    email: "alice@example.com",
-    phone: "123-456-7890",
-    type: "Family",
-    dob: "1990-05-12",
-    locality: "New York",
-    rating: 4.5,
-  },
-  {
-    id: 2,
-    name: "John Doe",
-    email: "john@example.com",
-    phone: "987-654-3210",
-    type: "Single",
-    dob: "1995-08-25",
-    locality: "Aspen",
-    rating: 4.8,
-  },
-];
-
 const UserManagement = () => {
-  const [users, setUsers] = useState(initialUsers);
+  const [users, setUsers] = useState([]);
   const [newUser, setNewUser] = useState({
-    id: "",
     name: "",
     email: "",
-    phone: "",
+    phone_no: "",
     type: "",
     dob: "",
     locality: "",
-    rating: 0,
+    password: "",
   });
+
+  useEffect(() => {
+    // Fetch users from the backend
+    axios
+      .get('http://localhost:5001/api/users')
+      .then((response) => setUsers(response.data))
+      .catch((error) => console.error('Error fetching users:', error));
+  }, []);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -44,49 +29,60 @@ const UserManagement = () => {
 
   const addUser = () => {
     if (
-      !newUser.id ||
       !newUser.name ||
       !newUser.email ||
-      !newUser.phone ||
+      !newUser.phone_no ||
       !newUser.type ||
       !newUser.dob ||
-      !newUser.locality
+      !newUser.locality ||
+      !newUser.password
     ) {
-      alert("Please fill out all fields!");
+      alert('Please fill out all fields!');
       return;
     }
-    setUsers([...users, { ...newUser, rating: 0 }]);
-    setNewUser({
-      id: "",
-      name: "",
-      email: "",
-      phone: "",
-      type: "",
-      dob: "",
-      locality: "",
-      rating: 0,
-    });
+
+    axios
+      .post('http://localhost:5000/signup', newUser)
+      .then((response) => {
+        if (response.data.status === 'success') {
+          alert(response.data.message);
+          setUsers([...users, { ...newUser }]);
+          setNewUser({
+            name: "",
+            email: "",
+            phone_no: "",
+            type: "",
+            dob: "",
+            locality: "",
+            password: "",
+          });
+        } else {
+          alert(response.data.message || 'Failed to add user.');
+        }
+      })
+      .catch((error) => {
+        console.error('Error adding user:', error);
+        alert('Failed to add user.');
+      });
   };
 
-  const deleteUser = (id) => {
-    const updatedUsers = users.filter((user) => user.id !== id);
-    setUsers(updatedUsers);
+  const deleteUser = (name) => {
+    axios
+      .delete(`http://localhost:5001/api/users/${name}`)
+      .then((response) => {
+        alert(response.data.message);
+        setUsers(users.filter((user) => user.name !== name));
+      })
+      .catch((error) => console.error('Error deleting user:', error));
   };
 
   return (
     <div className="user-management">
       <h2>User Management</h2>
-      
+
       {/* Add User Form */}
       <div className="add-user-form">
         <h3>Add New User</h3>
-        <input
-          type="number"
-          name="id"
-          placeholder="ID"
-          value={newUser.id}
-          onChange={handleInputChange}
-        />
         <input
           type="text"
           name="name"
@@ -103,19 +99,19 @@ const UserManagement = () => {
         />
         <input
           type="text"
-          name="phone"
+          name="phone_no"
           placeholder="Phone"
-          value={newUser.phone}
+          value={newUser.phone_no}
           onChange={handleInputChange}
         />
-        <select
-          name="type"
-          value={newUser.type}
-          onChange={handleInputChange}
-        >
+        <select name="type" value={newUser.type} onChange={handleInputChange}>
           <option value="">Select Type</option>
-          <option value="Family">Family</option>
-          <option value="Single">Single</option>
+          <option value="student">Student</option>
+            <option value="single_men">Single Men</option>
+            <option value="family">Family</option>
+            <option value="commercial">Commercial buyer</option>
+            <option value="Owner">Owner</option>
+            <option value="Admin">Admin</option>
         </select>
         <input
           type="date"
@@ -131,6 +127,13 @@ const UserManagement = () => {
           value={newUser.locality}
           onChange={handleInputChange}
         />
+        <input
+          type="password"
+          name="password"
+          placeholder="Password"
+          value={newUser.password}
+          onChange={handleInputChange}
+        />
         <button onClick={addUser}>Add User</button>
       </div>
 
@@ -140,32 +143,28 @@ const UserManagement = () => {
         <table>
           <thead>
             <tr>
-              <th>ID</th>
               <th>Name</th>
               <th>Email</th>
               <th>Phone</th>
               <th>Type</th>
               <th>DOB</th>
               <th>Locality</th>
-              <th>Rating</th>
               <th>Actions</th>
             </tr>
           </thead>
           <tbody>
             {users.map((user) => (
-              <tr key={user.id}>
-                <td>{user.id}</td>
+              <tr key={user.email}>
                 <td>{user.name}</td>
                 <td>{user.email}</td>
-                <td>{user.phone}</td>
+                <td>{user.phone_no}</td>
                 <td>{user.type}</td>
                 <td>{user.dob}</td>
                 <td>{user.locality}</td>
-                <td>{user.rating} ⭐</td>
                 <td>
                   <button
                     className="delete-btn"
-                    onClick={() => deleteUser(user.id)}
+                    onClick={() => deleteUser(user.name)}
                   >
                     Delete
                   </button>

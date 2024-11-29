@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import './Navbar.css';
-import { FaPhoneAlt, FaUserCircle } from 'react-icons/fa'; // Import Font Awesome icons
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import "./Navbar.css";
+import { FaPhoneAlt, FaUserCircle, FaHome } from "react-icons/fa"; // Import FaHome
+import { Link, useNavigate } from "react-router-dom";
 
 function Navbar() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [username, setUsername] = useState('');
-  const [usertype, setUsertype] = useState('');
+  const [username, setUsername] = useState("");
+  const [usertype, setUsertype] = useState("");
+  const navigate = useNavigate(); // Use navigate for programmatic routing
 
   useEffect(() => {
-    // Check if user is logged in by checking localStorage
-    const user = JSON.parse(localStorage.getItem('user'));
+    const user = JSON.parse(localStorage.getItem("user"));
     if (user) {
       setIsLoggedIn(true);
       setUsername(user.name);
@@ -19,26 +19,38 @@ function Navbar() {
   }, []);
 
   const handleLogout = () => {
-    // Clear user data from localStorage and log out
-    localStorage.removeItem('user');
+    localStorage.removeItem("user");
     setIsLoggedIn(false);
-    window.location.href = '/login'; // Redirect to home or login page after logout
+    navigate("/login");
   };
 
   return (
     <header className="header">
       <nav className="navbar">
-        <div className="navbar-brand">RentEase</div>
-        
+        <div className="navbar-brand" onClick={() => navigate("/home")}>
+          RentEase
+        </div>
         <div className="navbar-buttons">
+          {/* Home Icon Button */}
+          <div className="tooltip">
+            <Link to="/home">
+              <button className="home-btn">
+                <FaHome />
+              </button>
+            </Link>
+            <span className="tooltiptext">Home</span>
+          </div>
           <Link to="/msf">
             <button className="post-property-btn">Post Property</button>
           </Link>
-          <Link to="/contact">
-          <button className="contact-btn">
-            <FaPhoneAlt />
-          </button>
-          </Link>
+          <div className="tooltip">
+            <Link to="/contact">
+              <button className="contact-btn">
+                <FaPhoneAlt />
+              </button>
+            </Link>
+            <span className="tooltiptext">Contact Us</span>
+          </div>
           <div className="profile-dropdown">
             <button className="profile-btn">
               <FaUserCircle />
@@ -47,17 +59,23 @@ function Navbar() {
               {isLoggedIn ? (
                 <>
                   <p className="dropdown-item">{username}</p>
-                  
-                  <Link to="/user-profile-page" className="dropdown-item">Manage Profile</Link>
-                  
-                  {usertype==="Admin" && (<><Link to="/admin-panel" className="dropdown-item">Admin Panel</Link></>)}
-                  <button onClick={handleLogout} className="dropdown-item">Logout</button>
-                  {console.log(usertype)}
+                  <Link to="/user-profile-page" className="dropdown-item">
+                    Manage Profile
+                  </Link>
+                  {usertype === "Admin" && (
+                    <Link to="/admin-panel" className="dropdown-item">
+                      Admin Panel
+                    </Link>
+                  )}
+                  <button onClick={handleLogout} className="dropdown-item">
+                    Logout
+                  </button>
                 </>
               ) : (
-                <Link to="/login" className="dropdown-item">Log In</Link>
+                <Link to="/login" className="dropdown-item">
+                  Log In
+                </Link>
               )}
-              
             </div>
           </div>
         </div>
