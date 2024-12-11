@@ -8,6 +8,13 @@ const User = () => {
   const [editedUser, setEditedUser] = useState(null); // Temporarily edited user data
   const [error, setError] = useState(null);
 
+  const localities = [
+    "White Town", "Muthialpet", "Lawspet", "Reddiarpalayam", "Ouppalam", "Auroville", 
+    "Serenity Beach", "Chinna Veerampattinam", "Kottakuppam", "Mudaliarpet", 
+    "Ariyankuppam", "Thavalakuppam", "Kuyavarpalayam", "Villiyanur", 
+    "Thirubuvanai", "Karuvadikuppam", "Bahour"
+  ];
+
   // Load user from localStorage
   useEffect(() => {
     const storedUser = JSON.parse(localStorage.getItem("user"));
@@ -106,7 +113,7 @@ const User = () => {
                   <option value="single_men">Single Men</option>
                   <option value="family">Family</option>
                   <option value="commercial">Commercial Buyer</option>
-                  <option value="owner">Owner</option>
+                  <option value="Owner">Owner</option>
                 </select>
               </label>
               <label>
@@ -120,12 +127,17 @@ const User = () => {
               </label>
               <label>
                 Locality:
-                <input
-                  type="text"
+                <select
                   name="locality"
                   value={editedUser.locality}
                   onChange={handleInputChange}
-                />
+                >
+                  {localities.map((locality) => (
+                    <option key={locality} value={locality}>
+                      {locality}
+                    </option>
+                  ))}
+                </select>
               </label>
               <div className="action-buttons">
                 <button onClick={handleSave}>Save</button>

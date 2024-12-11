@@ -2,6 +2,13 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './UserManagement.css';
 
+const localities = [
+  "White Town", "Muthialpet", "Lawspet", "Reddiarpalayam", "Ouppalam", "Auroville",
+  "Serenity Beach", "Chinna Veerampattinam", "Kottakuppam", "Mudaliarpet",
+  "Ariyankuppam", "Thavalakuppam", "Kuyavarpalayam", "Villiyanur",
+  "Thirubuvanai", "Karuvadikuppam", "Bahour"
+];
+
 const UserManagement = () => {
   const [users, setUsers] = useState([]);
   const [newUser, setNewUser] = useState({
@@ -15,7 +22,6 @@ const UserManagement = () => {
   });
 
   useEffect(() => {
-    // Fetch users from the backend
     axios
       .get('http://localhost:5001/api/users')
       .then((response) => setUsers(response.data))
@@ -107,11 +113,11 @@ const UserManagement = () => {
         <select name="type" value={newUser.type} onChange={handleInputChange}>
           <option value="">Select Type</option>
           <option value="student">Student</option>
-            <option value="single_men">Single Men</option>
-            <option value="family">Family</option>
-            <option value="commercial">Commercial buyer</option>
-            <option value="Owner">Owner</option>
-            <option value="Admin">Admin</option>
+          <option value="single_men">Single Men</option>
+          <option value="family">Family</option>
+          <option value="commercial">Commercial Buyer</option>
+          <option value="Owner">Owner</option>
+          <option value="Admin">Admin</option>
         </select>
         <input
           type="date"
@@ -120,13 +126,14 @@ const UserManagement = () => {
           value={newUser.dob}
           onChange={handleInputChange}
         />
-        <input
-          type="text"
-          name="locality"
-          placeholder="Locality"
-          value={newUser.locality}
-          onChange={handleInputChange}
-        />
+        <select name="locality" value={newUser.locality} onChange={handleInputChange}>
+          <option value="">Select Locality</option>
+          {localities.map((locality, index) => (
+            <option key={index} value={locality}>
+              {locality}
+            </option>
+          ))}
+        </select>
         <input
           type="password"
           name="password"
@@ -159,7 +166,7 @@ const UserManagement = () => {
                 <td>{user.email}</td>
                 <td>{user.phone_no}</td>
                 <td>{user.type}</td>
-                <td>{user.dob}</td>
+                <td>{user.dob.split('T')[0]}</td>
                 <td>{user.locality}</td>
                 <td>
                   <button

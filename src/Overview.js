@@ -55,7 +55,7 @@ function Overview({ property }) {
           {isCommercial && (
             <>
               <div className="info-item">
-                <FaRulerCombined className="info-icon" /> <strong>Area:</strong> {property.area} sqft
+                <FaRulerCombined className="info-icon" /> <strong>Area:</strong> {property.carpetArea} sqft
               </div>
               <div className="info-item">
                 <GiOfficeChair className="info-icon" /> <strong>Seats:</strong> {property.seats}
