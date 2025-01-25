@@ -14,6 +14,7 @@ import UserProfilePage from './UserProfilePage';
 import AdminPanel from './AdminPanel';
 import VastuCalc from './VastuCalc';
 import Contact from './contact';
+import PricingPlans from './PricingPlans';
 // Placeholder components for future pages
 
 const About = () => <h2>About Page</h2>;
@@ -38,6 +39,7 @@ function App() {
           <Route path='/admin-panel' element={<AdminPanel/>}></Route>
           <Route path='/vastu-calc' element={<VastuCalc/>}></Route>
           <Route path='/contact' element={<Contact/>}></Route>
+          <Route path='/subscribe' element={<PricingPlans/>}></Route>
         </Routes>
       </div>
     </Router>

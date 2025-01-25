@@ -1,11 +1,78 @@
+/* Base Styles for Property Card */
 .property-card {
   display: flex;
   margin-bottom: 20px;
   border: 1px solid #ddd;
   border-radius: 5px;
   overflow: hidden;
+  position: relative; /* Ensure the shine overlay is positioned relative to the card */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for card */
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Smooth transition for hover effect */
 }
 
+.premium-badge {
+  background-color: #f39c12; /* Gold/orange color for the badge */
+  color: white; /* White text */
+  font-weight: bold;
+  padding: 5px 10px; /* Padding around the text */
+  border-radius: 20px; /* Rounded corners */
+  font-size: 1rem; /* Adjust font size */
+  position: absolute; /* Position relative to the card */
+  top: 10px; /* Position 10px from the top */
+  left: 10px; /* Position 10px from the left */
+  text-transform: uppercase; /* Make text uppercase */
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for better visibility */
+  z-index: 2; /* Ensure the badge is above other content */
+  animation: badgeGlow 2s ease-in-out infinite; /* Optional: Add glowing effect */
+}
+
+@keyframes badgeGlow {
+  0% {
+    box-shadow: 0 0 10px #f39c12, 0 0 20px #f39c12;
+  }
+  50% {
+    box-shadow: 0 0 20px #f39c12, 0 0 30px #f39c12;
+  }
+  100% {
+    box-shadow: 0 0 10px #f39c12, 0 0 20px #f39c12;
+  }
+}
+
+.property-card:hover {
+  transform: scale(1.02); /* Slightly enlarge the card on hover */
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2); /* Increase shadow on hover */
+}
+
+/* Shine Effect for Premium Card */
+.premium-shine {
+  position: absolute;
+  top: 0;
+  left: -100%; /* Start from outside the left */
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.3); /* Subtle white shine with gradient */
+  z-index: 1; /* Overlay above the content */
+  border-radius: 5px; /* Rounded corners matching the property card */
+  animation: shine 5s ease-in-out infinite; /* Slower animation duration */
+  box-shadow: 0 0 30px rgba(9, 12, 190, 0.6); /* Glow effect */
+}
+
+@keyframes shine {
+  0% {
+    left: -100%; /* Start from outside the left side */
+    opacity: 0.3; /* Start with subtle opacity */
+  }
+  50% {
+    left: 100%; /* Move to outside the right side */
+    opacity: 0.3; /* Keep the shine subtle */
+  }
+  100% {
+    left: 100%; /* Stay at the right edge */
+    opacity: 0; /* Fade out the shine */
+  }
+}
+
+/* Property Images */
 .property-images {
   width: 40%;
 }
@@ -15,14 +82,18 @@
   height: auto;
   max-height: 200px; /* Set a max height for the thumbnails */
   object-fit: cover; /* Ensure images maintain aspect ratio */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow around images */
+  border-radius: 5px; /* Rounded corners for images */
 }
 
+/* Property Details Section */
 .property-details {
   padding: 20px;
   flex-grow: 1;
   position: relative; /* Allow for positioning furnished label */
 }
 
+/* Header Row with Owner Rating */
 .header-row {
   display: flex;
   justify-content: space-between;
@@ -33,34 +104,74 @@
   margin: 0;
   font-size: 1.5rem;
   color: #333;
+  transition: transform 0.3s ease-in-out;
+}
+
+.owner-rating:hover {
+  transform: scale(1.05); /* Slightly enlarge on hover */
 }
 
 .yellow {
   color: gold; /* Apply yellow color for the star */
 }
 
+/* Furnished Label */
 .furnished-label {
   background-color: green; /* Or any color you prefer */
   color: white;
   padding: 5px;
   border-radius: 3px;
   position: absolute;
-  top: 10px;
+  top: 50px;
   right: 10px;
 }
 
+/* Featured Label */
+.featured-label {
+  background-color: #f39c12; /* Gold/orange background color */
+  color: white; /* White text color */
+  font-weight: bold; /* Make the text bold */
+  padding: 5px 10px; /* Padding around the text, with more padding horizontally */
+  border-radius: 20px; /* Rounded corners */
+  font-size: 1rem; /* Set font size */
+  position: absolute; /* Position relative to the container */
+  top: 10px; /* Position 10px from the top */
+  right: 10px; /* Position 10px from the left */
+  text-transform: uppercase; /* Make text uppercase */
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for better visibility */
+}
+
+/* Price Info Divider */
 .price-info .divider {
   margin: 0 5px; /* Reduce gap between elements */
 }
 
+/* Highlights Section */
 .highlights {
   margin-top: 10px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
+.property-card:hover .highlights {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Vastu Rating Section */
 .vastu-rating {
   display: flex;
   align-items: center;
   margin-top: 10px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.property-card:hover .vastu-rating {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .vastu-icon {
@@ -68,4 +179,44 @@
   height: 24px;
   margin-right: 8px;
   vertical-align: middle;
+}
+
+/* Card Text Fade-in Effect */
+.property-details p {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.property-card:hover .property-details p {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.property-details .unique-features,
+.property-details .type-location {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.property-card:hover .property-details .unique-features,
+.property-card:hover .property-details .type-location {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Button Styling */
+.view-details-button {
+  background-color: #007bff; /* Blue color for button */
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.view-details-button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
 }

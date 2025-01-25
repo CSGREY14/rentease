@@ -7,7 +7,7 @@ function PropertyProfile({ formData, updateFormData, prevStep, nextStep }) {
     carpetArea, numberOfFloors,
     propertyAge, availableFrom, 
     uniqueFeatures, seats, meetingRooms, cabins, washrooms, // For commercial properties
-    conferenceArea, receptionArea, oxygenDuct, maintenanceStaff, 
+    readyToMove,conferenceArea, receptionArea, oxygenDuct, maintenanceStaff, 
     serviceLift, waterStorage, wasteDisposal, ups, parking, 
     fireAlarm, securityAlarm, fireExtinguisher, centralAC, cctv, securityPersonnel
   } = formData;
@@ -88,7 +88,7 @@ function PropertyProfile({ formData, updateFormData, prevStep, nextStep }) {
                     <button
                       key={option}
                       type="button"
-                      className={conferenceArea === option ? 'selected' : ''}
+                      className={readyToMove === option ? 'selected' : ''}
                       onClick={() => updateFormData({ readyToMove: option })}
                     >
                       {option}

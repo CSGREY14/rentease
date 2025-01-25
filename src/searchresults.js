@@ -7,6 +7,7 @@ import { useLocation } from 'react-router-dom';
 import PGFilterPanel from './pgfilterpanel'; // Import PG filter panel
 import CommercialFilterPanel from './commercialfilterpanel'; // Import Commercial filter panel
 import Navbar from './navbar';
+import axios from 'axios'; // Import axios for API calls
 
 function SearchResults() {
   const [properties, setProperties] = useState([]);
@@ -38,18 +39,44 @@ function SearchResults() {
   const locality = queryParams.get('locality'); // Get the locality
 
 
-   useEffect(() => {
+  useEffect(() => {
     // Fetch properties by category
     fetch(`http://localhost:5001/api/properties?category=${category}&subtype=${subtype}&locality=${locality}`)
       .then((response) => response.json())
       .then((data) => {
-        setProperties(data);
-        setFilteredProperties(data);
+        fetchSubscriptionTiers(data);
       })
       .catch((error) => {
         console.error('Error fetching properties:', error);
       });
   }, [category, subtype, locality]);
+
+  const fetchSubscriptionTiers = async (properties) => {
+    try {
+      const updatedProperties = await Promise.all(
+        properties.map(async (property) => {
+          const response = await axios.get('http://localhost:5001/api/get-subscription-tier', {
+            params: { name: property.ownerName }
+          });
+          return {
+            ...property,
+            subscription_tier: response.data.subscription_tier
+          };
+        })
+      );
+
+      // Sort properties by subscription tier
+      const sortedProperties = updatedProperties.sort((a, b) => {
+        const tiersOrder = ['Pro', 'Premium', 'Free'];
+        return tiersOrder.indexOf(a.subscription_tier) - tiersOrder.indexOf(b.subscription_tier);
+      });
+
+      setProperties(sortedProperties);
+      setFilteredProperties(sortedProperties);
+    } catch (error) {
+      console.error('Error fetching subscription tiers:', error);
+    }
+  };
 
   // Function to filter properties based on the applied filters
   const applyFilters = () => {

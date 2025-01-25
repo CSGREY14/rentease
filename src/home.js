@@ -5,6 +5,7 @@ import SearchBar from "./searchbar";
 import RecommendedProperties from "./recommendedproperties";
 import { CircularProgress, Box, Typography, Button } from "@mui/material";
 import MaintenancePage from "./MaintenancePage";
+import PremiumSubscriptionBanner from "./PremiumSubscriptionBanner";
 
 // This function checks if the website is under maintenance
 const checkMaintenanceMode = async () => {
@@ -61,7 +62,9 @@ else{
           <p>Explore the best properties in your locality.</p>
         </div>
       </div>
+      
       <SearchBar />
+      <PremiumSubscriptionBanner/>
       <RecommendedProperties locality={user.locality} />
     </div>
   );

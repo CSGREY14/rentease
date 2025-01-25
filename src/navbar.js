@@ -40,9 +40,9 @@ function Navbar() {
             </Link>
             <span className="tooltiptext">Home</span>
           </div>
-          <Link to="/msf">
+          {(usertype=="Owner"||usertype=="Admin") && <Link to="/msf">
             <button className="post-property-btn">Post Property</button>
-          </Link>
+          </Link>}
           <div className="tooltip">
             <Link to="/contact">
               <button className="contact-btn">

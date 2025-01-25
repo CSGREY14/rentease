@@ -10,15 +10,27 @@ import Navbar from './navbar';
 
 const UserProfilePage = () => {
   const [activeSection, setActiveSection] = useState('Dashboard');
-
-  const menuItems = [
+  const user = JSON.parse(localStorage.getItem("user"));
+  var menuItems=[];
+if(user.type=="Owner"||user.type=="Admin")
+{
+  menuItems = [
     
     { text: 'User', key: 'User' },
     { text: 'Listings', key: 'Listings' },
     { text: 'Wishlist', key: 'Wishlist' },
     { text: 'Tenants', key: 'Tenants' },
   ];
-
+}
+else{
+  menuItems = [
+    
+    { text: 'User', key: 'User' },
+  
+    { text: 'Wishlist', key: 'Wishlist' },
+  
+  ];
+}
   const renderContent = () => {
     switch (activeSection) {
       

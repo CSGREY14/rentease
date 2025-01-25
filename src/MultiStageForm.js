@@ -29,7 +29,7 @@ function MultiStageForm() {
     peopleSharing: 0, // Number of people sharing the room
     carpetArea: 1, // Added carpet area
     isFurnished: 'No', // Added furnished status
-    readyToMove:'No',
+    readyToMove:'no',
     appliances: { // Added appliances count as an object
       refrigerator: 0,
       washingMachine: 0,

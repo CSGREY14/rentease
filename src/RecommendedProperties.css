@@ -74,3 +74,32 @@
 .scroll-btn-left:hover, .scroll-btn-right:hover {
   background-color: #999;
 }
+
+.premium-badge {
+  background-color: #f39c12; /* Gold/orange color for the badge */
+  color: white; /* White text */
+  font-weight: bold;
+  padding: 5px 10px; /* Padding around the text */
+  border-radius: 20px; /* Rounded corners */
+  font-size: 1rem; /* Adjust font size */
+  position: absolute; /* Position relative to the card */
+  top: 10px; /* Position 10px from the top */
+  left: 10px; /* Position 10px from the left */
+  text-transform: uppercase; /* Make text uppercase */
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for better visibility */
+  z-index: 2; /* Ensure the badge is above other content */
+  animation: badgeGlow 2s ease-in-out infinite; /* Optional: Add glowing effect */
+}
+
+/* Optional: Glowing effect for the badge */
+@keyframes badgeGlow {
+  0% {
+    box-shadow: 0 0 10px #f39c12, 0 0 20px #f39c12;
+  }
+  50% {
+    box-shadow: 0 0 20px #f39c12, 0 0 30px #f39c12;
+  }
+  100% {
+    box-shadow: 0 0 10px #f39c12, 0 0 20px #f39c12;
+  }
+}

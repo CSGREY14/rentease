@@ -75,7 +75,7 @@ const Wishlist = () => {
                   <strong>Price:</strong> {property.expectedRent}
                 </p>
                 <p>
-                  <strong>Type:</strong> {property.propertySubtype}
+                  <strong>Type:</strong> {property.propertyType} {property.propertySubtype}
                 </p>
                 <button
                   className="view-details-button"

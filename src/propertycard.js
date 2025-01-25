@@ -22,6 +22,11 @@ const furnishedLabel =
     <span className="furnished-label">Furnished</span>
   ): null;
 
+   // Featured label for Pro or Premium subscription tiers
+   const featuredLabel = (property.subscription_tier === 'Pro' || property.subscription_tier === 'Premium') ? (
+    <span className="featured-label">Featured</span>
+  ) : null;
+
   // Highlight amenities for residential and commercial properties
   const highlightAmenities = (amenities) => {
     return Object.entries(amenities)
@@ -91,6 +96,12 @@ const furnishedLabel =
   
   return (
     <div className="property-card">
+      {property.subscription_tier === "Pro" || property.subscription_tier === "Premium" ? (
+    <div className="premium-shine"></div>
+  ) : null}
+  {property.subscription_tier === "Pro" || property.subscription_tier === "Premium" ? (
+    <span className="premium-badge">Premium</span>
+  ) : null}
       <div className="property-images">
         {/* Carousel for displaying images */}
       <Carousel
@@ -116,6 +127,7 @@ const furnishedLabel =
             {property.ownerName} <FaStar className="star-icon yellow" /> {property.rating}
           </h2>
           {furnishedLabel}
+          {featuredLabel}
         </div>
 
         <p className="type-location">
