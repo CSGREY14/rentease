@@ -1,70 +1,49 @@
-# Getting Started with Create React App
+# 🏠 RentEase – Smart Rental Property Platform
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+RentEase is a full-stack MERN (MongoDB, Express, React, Node.js) web application designed to simplify property rentals for tenants, landlords, and PG operators. It offers intelligent property recommendations, Vastu/Feng Shui-based scoring, and a user-friendly rating system.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 🚀 Features
 
-### `npm start`
+- 🔍 **Smart Search & Filters** – Browse properties by type (Residential, Commercial, PG), location, rent, furnishing, and more.
+- 🧠 **Pricing Recommendation Engine** – Suggests fair rent based on location, amenities, and Vastu/Feng Shui compatibility.
+- 🧭 **Vastu/Feng Shui Evaluation** – Calculates compatibility using user-inputted questionnaire results.
+- ⭐ **Ratings & Reviews** – Tenants, landlords, and properties can be rated using a 5-star system.
+- 📋 **Property Details & Dealer Info** – View full property specs, dealer profiles, and send inquiries.
+- 🛠️ **Admin Dashboard** – Manage users, properties, and platform-wide settings.
+- 🖼️ **Image Upload & Gallery** – Upload property photos, with images stored locally and paths in MongoDB.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🧰 Tech Stack
 
-### `npm test`
+- **Frontend**: React.js, Material-UI, React Router
+- **Backend**: Node.js, Express.js
+- **Database**: MongoDB
+- **Geospatial Tools**: QGIS, Leaflet
+- **Other Tools**: Axios, Multer, EmailJS (for alerts/inquiries)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## 📸 Screenshots
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## ⚙️ Installation
 
-### `npm run eject`
+```bash
+# Clone the repository
+git clone https://github.com/yourusername/rentease.git
+cd rentease
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+# Install server and client dependencies
+cd server
+npm install
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+cd ../client
+npm install
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+# Start backend and frontend
+npm run dev # or use concurrently to run both
